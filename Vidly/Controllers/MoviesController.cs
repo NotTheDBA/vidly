@@ -60,5 +60,15 @@ namespace Vidly.Controllers
 
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
+
+
+        //MVC5 attribute-based routing
+        [Route("movies/released/{year:range(2015, 2017)}/{month:regex(\\d{2}):range(1, 12)}")]
+        // Movies/ByReleaseDate
+        public ActionResult ByReleaseDate(int year, int month)
+        {
+            return Content(year + "/" + month);
+        }
+
     }
 }
