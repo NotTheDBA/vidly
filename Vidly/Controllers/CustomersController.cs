@@ -15,8 +15,6 @@ namespace Vidly.Controllers
         {
             var customers = new List<Customer>
             {
-                //new Customer {Name = "John Smith"},
-                //new Customer {Name = "Mary Williams"}
                 new Customer {Id = 1, Name = "John Smith"},
                 new Customer {Id = 2, Name = "Mary Williams"}
             };
@@ -34,15 +32,16 @@ namespace Vidly.Controllers
         {
             var customer = "";
             if (!id.HasValue || id <= 0)
-                return new EmptyResult();
+                return HttpNotFound();
             else
 
             if (id == 1)
                 customer = "John Smith";
-            else //if (id == 2)
+            else if (id == 2)
                 customer = "Mary Williams";
+            else
+                return HttpNotFound();
 
-            //return Content(id.ToString());
             return View(new Customer { Name = customer });
 
         }
