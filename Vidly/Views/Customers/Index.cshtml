@@ -1,0 +1,34 @@
+﻿@model Vidly.ViewModels.DefaultCustomersViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <text>No Customers Found.</text>
+}
+else
+{
+    <table title="Customer">
+
+        @if (Model.Customers.Count == 0)
+        {
+            <text>We have no customers yet.</text>
+        }
+        else
+        {
+            
+                foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                    </tr>
+                }
+
+        }
+    </table>
+}

@@ -17,7 +17,7 @@ namespace Vidly.Controllers
 
             /////This is older, but fragile
             //ViewData["Movie"] = movie;
-            ////This was the "fix", but still has issues.
+            ////This was the "fix", but still has similar issues.
             //ViewBag.Movie = movie;
             //return View();
             var customers = new List<Customer>
