@@ -58,15 +58,24 @@ namespace Vidly.Controllers
                 return Content("id=" + id);
         }
 
-
-        public ActionResult View(int? id)
+        
+        public ActionResult Details(int? id)
         {
-            if (!id.HasValue)
-                return new EmptyResult();
+            var movie = "";
+            if (!id.HasValue || id <= 0)
+                return HttpNotFound();
             else
-                return Content("id=" + id);
-        }
 
+            if (id == 1)
+                movie = "Shrek";
+            else if (id == 2)
+                movie = "Wall-e";
+            else
+                return HttpNotFound();
+
+            return View(new Movie { Name = movie });
+
+        }
         //// Movies
         //public ActionResult Index(int? pageIndex, string sortBy)
         //{
