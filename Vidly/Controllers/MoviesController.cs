@@ -58,7 +58,7 @@ namespace Vidly.Controllers
                 return Content("id=" + id);
         }
 
-        
+
         public ActionResult Details(int? id)
         {
             var movie = "";
