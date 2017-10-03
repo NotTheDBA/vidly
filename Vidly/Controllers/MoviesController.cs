@@ -90,22 +90,22 @@ namespace Vidly.Controllers
         //}
 
         // GET: Movies
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var movies = new List<Movie>
+            var movies = GetMovies();
+
+            return View(movies);
+        }
+
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
             {
                 new Movie {Id = 1, Name = "Shrek"},
                 new Movie {Id = 2, Name = "Wall-e"}
             };
-
-            var viewModel = new DefaultMoviesViewModel
-            {
-                Movies = movies
-            };
-
-            return View(viewModel);
         }
-
 
         //MVC5 attribute-based routing
         [Route("movies/released/{year:range(2015, 2017)}/{month:regex(\\d{2}):range(1, 12)}")]
