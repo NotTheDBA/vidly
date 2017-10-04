@@ -27,7 +27,7 @@ namespace Vidly.Controllers
         // GET: Movies
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(c => c.Genre).ToList();
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movies);
         }
@@ -63,7 +63,7 @@ namespace Vidly.Controllers
             if (id is null)
                 return RedirectToAction("Index");
 
-            var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(c => c.Id == id);
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
             if (movie == null)
                 return RedirectToAction("Index");
 
