@@ -33,11 +33,14 @@ namespace Vidly.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (id is null)
+                return RedirectToAction("Index");
+
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
             if (customer == null)
-                return HttpNotFound();
+                return RedirectToAction("Index");
 
             return View(customer);
 

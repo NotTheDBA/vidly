@@ -62,8 +62,9 @@ namespace Vidly.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (!id.HasValue)
-                return HttpNotFound();
+
+            if (id is null)
+                return RedirectToAction("Index");
             else
             if (id < 1)
                 return RedirectToAction("Add", "Movies", new { name = "[not found, enter movie]" });
@@ -75,8 +76,9 @@ namespace Vidly.Controllers
         public ActionResult Details(int? id)
         {
             var movie = "";
-            if (!id.HasValue || id <= 0)
-                return HttpNotFound();
+
+            if (id is null)
+                return RedirectToAction("Index");
             else
 
             if (id == 1)
@@ -84,7 +86,7 @@ namespace Vidly.Controllers
             else if (id == 2)
                 movie = "Wall-e";
             else
-                return HttpNotFound();
+                return RedirectToAction("Index");
 
             return View(new Movie { Name = movie });
 
