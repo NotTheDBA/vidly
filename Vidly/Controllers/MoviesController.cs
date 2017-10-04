@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,14 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
             base.Dispose(disposing);
+        }
+
+        // GET: Movies
+        public ViewResult Index()
+        {
+            var movies = _context.Movies.Include(c => c.Genre).ToList();
+
+            return View(movies);
         }
 
         // GET: Movies/Random
@@ -49,6 +58,18 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id is null)
+                return RedirectToAction("Index");
+
+            var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(c => c.Id == id);
+            if (movie == null)
+                return RedirectToAction("Index");
+
+            return View(movie);
+              
+        }
         public ActionResult Add(string name)
         {
 
@@ -73,24 +94,6 @@ namespace Vidly.Controllers
         }
 
 
-        public ActionResult Details(int? id)
-        {
-            var movie = "";
-
-            if (id is null)
-                return RedirectToAction("Index");
-            else
-
-            if (id == 1)
-                movie = "Shrek";
-            else if (id == 2)
-                movie = "Wall-e";
-            else
-                return RedirectToAction("Index");
-
-            return View(new Movie { Name = movie });
-
-        }
         //// Movies
         //public ActionResult Index(int? pageIndex, string sortBy)
         //{
@@ -104,23 +107,6 @@ namespace Vidly.Controllers
         //    return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         //}
 
-        // GET: Movies
-        public ViewResult Index()
-        {
-            var movies = GetMovies();
-
-            return View(movies);
-        }
-
-
-        private IEnumerable<Movie> GetMovies()
-        {
-            return new List<Movie>
-            {
-                new Movie {Id = 1, Name = "Shrek"},
-                new Movie {Id = 2, Name = "Wall-e"}
-            };
-        }
 
         //MVC5 attribute-based routing
         [Route("movies/released/{year:range(2015, 2017)}/{month:regex(\\d{2}):range(1, 12)}")]
