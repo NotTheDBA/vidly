@@ -32,7 +32,6 @@ namespace Vidly.Controllers
             return View(customers);
         }
 
-
         public ActionResult Details(int? id)
         {
             if (id is null)
@@ -46,6 +45,9 @@ namespace Vidly.Controllers
 
         }
         
-
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }
