@@ -53,8 +53,27 @@ namespace Vidly.Controllers
                 MembershipTypes = membershipTypes
             };
             //return View(viewModel);
-            //withouth this, it will look for a form matching the method name.
+            //without this, it will look for a form matching the method name.
             return View("CustomerForm", viewModel);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id is null)
+                return RedirectToAction("Index");
+
+            var customer = _context.Customers.Include(c => c.MembershipType).Single(c => c.Id == id);
+            if (customer == null)
+                return RedirectToAction("Index");
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
+
         }
 
         [HttpPost]
@@ -82,25 +101,6 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Customers");
         }
 
-
-        public ActionResult Edit(int? id)
-        {
-            if (id is null)
-                return RedirectToAction("Index");
-
-            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
-            if (customer == null)
-                return RedirectToAction("Index");
-
-            var viewModel = new CustomerFormViewModel
-            {
-                Customer = customer,
-                MembershipTypes = _context.MembershipTypes.ToList()
-            };
-
-            return View("CustomerForm", viewModel);
-
-        }
 
     }
 }

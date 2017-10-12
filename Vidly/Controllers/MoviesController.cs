@@ -70,27 +70,68 @@ namespace Vidly.Controllers
             return View(movie);
               
         }
-        public ActionResult Add(string name)
+
+        public ActionResult New()
         {
+            var genres = _context.Genres.ToList();
 
-            if (String.IsNullOrWhiteSpace(name))
-                name = "[enter movie]";
-
-            return Content("name=" + name);
-
+            var viewModel = new MovieFormViewModel
+            {
+                Genre = genres
+            };
+            //return View(viewModel);
+            //without this, it will look for a form matching the method name.
+            return View("MovieForm", viewModel);
         }
-
 
         public ActionResult Edit(int? id)
         {
 
             if (id is null)
                 return RedirectToAction("Index");
+
+            var movie = _context.Movies.Include(m => m.Genre).Single(c => c.Id == id);
+            if (movie == null)
+                return RedirectToAction("New", "Movies");
+
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genre = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }
             else
-            if (id < 1)
-                return RedirectToAction("Add", "Movies", new { name = "[not found, enter movie]" });
-            else
-                return Content("id=" + id);
+            {
+                var movieInDb = _context.Movies.Single(c => c.Id == movie.Id);
+                //TryUpdateModel(customerInDb);  // officialy recommended; could have security holes
+                //TryUpdateModel(customerInDb, "", new string[] { "Name", "Email" }); //officialy recommended whitelisting - depends on "magic string" and could break if the model changes.
+                //This method allows the same granular control as whitelisting, but will be properly refactored if proprties are renamed.
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                //movieInDb.DateAdded = movie.DateAdded;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.NumberInStock = movie.NumberInStock;
+                //Tools such as Auto-Mapper can simplify the code for updating all properties.
+                //dto - data transfer objects - can also be used with Auto-Mapper to limit fields to those which can be updated.
+
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
         }
 
 
