@@ -249,6 +249,10 @@
     <Compile Include="Migrations\201710121914466_EnforceMovieFields.Designer.cs">
       <DependentUpon>201710121914466_EnforceMovieFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710161600041_DatabaseChange.cs" />
+    <Compile Include="Migrations\201710161600041_DatabaseChange.Designer.cs">
+      <DependentUpon>201710161600041_DatabaseChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -394,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710121914466_EnforceMovieFields.resx">
       <DependentUpon>201710121914466_EnforceMovieFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710161600041_DatabaseChange.resx">
+      <DependentUpon>201710161600041_DatabaseChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
