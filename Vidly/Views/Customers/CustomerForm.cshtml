@@ -21,7 +21,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.BirthDate)
         @Html.TextBoxFor(m => m.Customer.BirthDate, "{0:MMM d, yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.BirthDate, "A valid birth date is required for this membership type.")
+        @Html.ValidationMessageFor(m => m.Customer.BirthDate)
     </div>
     @Html.Label("Subscribe to newsletter?") <br />
     <div class="checkbox">
@@ -35,3 +35,7 @@
     <button type="submit" class="btn btn-primary">Save</button>
 }
 
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
