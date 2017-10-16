@@ -10,7 +10,7 @@ namespace Vidly.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter the customer's name")]
+        [Required(ErrorMessage = "Please enter a name.")]
         [StringLength(255)]
         public string Name { get; set; }
 
@@ -19,6 +19,7 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
 
         [Display(Name = "Membership Type")]
+        [Required(ErrorMessage = "Please select a Membership.")]
         public byte MembershipTypeId { get; set; }
  
         [Display(Name = "Date of Birth")]
