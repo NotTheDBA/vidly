@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Vidly.Models
 {
-    public class Min18YearsIfAMember : ValidationAttribute
+    public class Min18YearsIfAMemberAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -18,7 +18,7 @@ namespace Vidly.Models
 ;           }
 
             if (customer.BirthDate == null)
-                return new ValidationResult("Birthdate is Required");
+                return new ValidationResult("Birthdate is required.");
 
             var age = DateTime.Today.Year - customer.BirthDate.Value.Year;
 
