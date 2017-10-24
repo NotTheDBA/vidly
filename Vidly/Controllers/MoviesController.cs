@@ -94,9 +94,8 @@ namespace Vidly.Controllers
             if (movie == null)
                 return RedirectToAction("New", "Movies");
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genre = _context.Genres.ToList()
             };
 
@@ -110,9 +109,8 @@ namespace Vidly.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new MovieFormViewModel
+                var viewModel = new MovieFormViewModel(movie)
                 {
-                    Movie = movie,
                     Genre = _context.Genres.ToList()
                 };
 
