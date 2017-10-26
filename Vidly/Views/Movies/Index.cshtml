@@ -1,24 +1,37 @@
-﻿@model Vidly.ViewModels.DefaultMoviesViewModel
+﻿@model IEnumerable<Vidly.Models.Movie>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
-
-@if (Model.Movies.Count == 0)
+@using (Html.BeginForm("action", "controller"))
 {
-    <text>No Movies Found.</text>
+    <div class="form-group">
+        @Html.ActionLink("New Movie", "New", "Movies", null, new {@class ="btn btn-primary btn-lg"})
+    </div>
+}
+@if (!Model.Any())
+{
+    <p>We don't have any movies yet.</p>
 }
 else
 {
     <table title="Movies" class="table table-bordered table-hover">
-            <th>Movie</th>
-            @foreach (var movie in Model.Movies)
+        <thead>
+            <tr>
+                <td>Movie</td>
+                <td>Genre</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>
+                    <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
+                    <td>@movie.Genre.Name</td>
                 </tr>
             }
-        </table>
+        </tbody>
+    </table>
 }
