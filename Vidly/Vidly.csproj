@@ -26,6 +26,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/dbb9b935-6f84-41ef-b5f4-e08fbf1b38d9/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Vidly</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/dbb9b935-6f84-41ef-b5f4-e08fbf1b38d9/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Vidly</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,12 +48,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.4.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.4.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.4.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.4.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.4.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.TraceListener, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.TraceListener.2.4.1\lib\net45\Microsoft.ApplicationInsights.TraceListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -161,27 +193,6 @@
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
       <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -194,64 +205,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709281531189_InitialModel.cs" />
-    <Compile Include="Migrations\201709281531189_InitialModel.Designer.cs">
-      <DependentUpon>201709281531189_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201710261411042_Initial.cs" />
+    <Compile Include="Migrations\201710261411042_Initial.Designer.cs">
+      <DependentUpon>201710261411042_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710031841442_AddIsSubscribedToNewsletter-toCustomer.cs" />
-    <Compile Include="Migrations\201710031841442_AddIsSubscribedToNewsletter-toCustomer.Designer.cs">
-      <DependentUpon>201710031841442_AddIsSubscribedToNewsletter-toCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031851148_AddMembershipType.cs" />
-    <Compile Include="Migrations\201710031851148_AddMembershipType.Designer.cs">
-      <DependentUpon>201710031851148_AddMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710032301026_SeedMembershipTypes.cs" />
-    <Compile Include="Migrations\201710032301026_SeedMembershipTypes.Designer.cs">
-      <DependentUpon>201710032301026_SeedMembershipTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710032309227_ApplyAnnotationsToCustomerName.cs" />
-    <Compile Include="Migrations\201710032309227_ApplyAnnotationsToCustomerName.Designer.cs">
-      <DependentUpon>201710032309227_ApplyAnnotationsToCustomerName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041556401_AddMembershipTypeName.cs" />
-    <Compile Include="Migrations\201710041556401_AddMembershipTypeName.Designer.cs">
-      <DependentUpon>201710041556401_AddMembershipTypeName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041657545_SeedMembershipName.cs" />
-    <Compile Include="Migrations\201710041657545_SeedMembershipName.Designer.cs">
-      <DependentUpon>201710041657545_SeedMembershipName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041745303_AddBirthdateToCustomer.cs" />
-    <Compile Include="Migrations\201710041745303_AddBirthdateToCustomer.Designer.cs">
-      <DependentUpon>201710041745303_AddBirthdateToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041920139_AddMovieGenre.cs" />
-    <Compile Include="Migrations\201710041920139_AddMovieGenre.Designer.cs">
-      <DependentUpon>201710041920139_AddMovieGenre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041923575_SeedMovieGenre.cs" />
-    <Compile Include="Migrations\201710041923575_SeedMovieGenre.Designer.cs">
-      <DependentUpon>201710041923575_SeedMovieGenre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041930120_AddGenreToMovies.cs" />
-    <Compile Include="Migrations\201710041930120_AddGenreToMovies.Designer.cs">
-      <DependentUpon>201710041930120_AddGenreToMovies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710101200190_AddMovieDates.cs" />
-    <Compile Include="Migrations\201710101200190_AddMovieDates.Designer.cs">
-      <DependentUpon>201710101200190_AddMovieDates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710121914466_EnforceMovieFields.cs" />
-    <Compile Include="Migrations\201710121914466_EnforceMovieFields.Designer.cs">
-      <DependentUpon>201710121914466_EnforceMovieFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710161600041_DatabaseChange.cs" />
-    <Compile Include="Migrations\201710161600041_DatabaseChange.Designer.cs">
-      <DependentUpon>201710161600041_DatabaseChange.cs</DependentUpon>
+    <Compile Include="Migrations\201710261414104_SeedTables.cs" />
+    <Compile Include="Migrations\201710261414104_SeedTables.Designer.cs">
+      <DependentUpon>201710261414104_SeedTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,7 +226,8 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\NotFutureDate.cs" />
+    <Compile Include="Models\NotFutureBirthDate.cs" />
+    <Compile Include="Models\NotFutureReleaseDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DefaultCustomersViewModel.cs" />
@@ -286,6 +251,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
+    <None Include="Properties\PublishProfiles\Vidly-asp-mvc - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -361,47 +328,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709281531189_InitialModel.resx">
-      <DependentUpon>201709281531189_InitialModel.cs</DependentUpon>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710261411042_Initial.resx">
+      <DependentUpon>201710261411042_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031841442_AddIsSubscribedToNewsletter-toCustomer.resx">
-      <DependentUpon>201710031841442_AddIsSubscribedToNewsletter-toCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031851148_AddMembershipType.resx">
-      <DependentUpon>201710031851148_AddMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710032301026_SeedMembershipTypes.resx">
-      <DependentUpon>201710032301026_SeedMembershipTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710032309227_ApplyAnnotationsToCustomerName.resx">
-      <DependentUpon>201710032309227_ApplyAnnotationsToCustomerName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041556401_AddMembershipTypeName.resx">
-      <DependentUpon>201710041556401_AddMembershipTypeName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041657545_SeedMembershipName.resx">
-      <DependentUpon>201710041657545_SeedMembershipName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041745303_AddBirthdateToCustomer.resx">
-      <DependentUpon>201710041745303_AddBirthdateToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041920139_AddMovieGenre.resx">
-      <DependentUpon>201710041920139_AddMovieGenre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041923575_SeedMovieGenre.resx">
-      <DependentUpon>201710041923575_SeedMovieGenre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041930120_AddGenreToMovies.resx">
-      <DependentUpon>201710041930120_AddGenreToMovies.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710101200190_AddMovieDates.resx">
-      <DependentUpon>201710101200190_AddMovieDates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710121914466_EnforceMovieFields.resx">
-      <DependentUpon>201710121914466_EnforceMovieFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710161600041_DatabaseChange.resx">
-      <DependentUpon>201710161600041_DatabaseChange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710261414104_SeedTables.resx">
+      <DependentUpon>201710261414104_SeedTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

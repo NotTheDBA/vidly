@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Vidly.Models
 {
-    public class NotFutureDateAttribute : ValidationAttribute
+    public class NotFutureReleaseDateAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -14,7 +11,9 @@ namespace Vidly.Models
 
             var future = movie.ReleaseDate.Date.Subtract(DateTime.Today.Date).Days;
 
-            return (future > 0)
+            var future2 = movie.DateAdded.Date.Subtract(DateTime.Today.Date).Days;
+
+            return (future > 0 || future2 > 0)
                 ? new ValidationResult("Future dates are not allowed.")
                 : ValidationResult.Success;
         }
