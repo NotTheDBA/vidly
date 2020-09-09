@@ -360,7 +360,7 @@
       <Version>4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Owin.Security.Cookies">
-      <Version>4.1.0</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Owin.Security.Facebook">
       <Version>4.1.0</Version>
