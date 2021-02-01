@@ -312,7 +312,7 @@
       <Version>3.5.1</Version>
     </PackageReference>
     <PackageReference Include="jQuery.Validation">
-      <Version>1.19.2</Version>
+      <Version>1.19.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.ApplicationInsights">
       <Version>2.16.0</Version>
