@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - NotTheDBA
+  ignore:
+  - dependency-name: Microsoft.ApplicationInsights
+    versions:
+    - 2.17.0
